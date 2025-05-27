@@ -1927,6 +1927,77 @@ ul.actions {
 }
 
 /* Icons */
+/* Icons */
+ul.icons {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.icons li {
+    display: inline-block;
+    padding: 0 0.75em 0 0;
+}
+
+ul.icons li:last-child {
+    padding-right: 0;
+}
+
+ul.icons li > a, ul.icons li > span {
+    border: 0;
+}
+
+ul.icons li > a {
+    -moz-transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+ul.icons li > a:hover {
+    color: #E27689 !important;
+}
+
+ul.icons.major {
+    text-align: center;
+    margin: 3em 0;
+}
+
+ul.icons.major li {
+    padding: 0 2.5em;
+}
+
+ul.icons.major li .icon:before {
+    font-size: 1.5em;
+}
+
+ul.icons.major li > a {
+    border: 0;
+    border-radius: 100%;
+    display: inline-block;
+    height: 5em;
+    line-height: 5em;
+    text-align: center;
+    width: 5em;
+    background: #fff;
+    border: solid 2px #dbdbdb;
+}
+
+ul.icons.major li > a:hover {
+    background-color: #E27689;
+    border-color: #E27689;
+    color: #fff !important;
+}
+
+@media screen and (max-width: 736px) {
+    ul.icons.major li {
+        padding: 0 1.25em;
+    }
+
+    ul.icons.major li .icon:before {
+        font-size: 1.25em;
+    }
+}
 
 ul.icons {
 	cursor: default;
