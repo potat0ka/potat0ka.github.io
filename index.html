@@ -11,8 +11,15 @@
   <style>
     /* Existing styles */
     @media screen and (max-width: 736px) {
+      .icons.major {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       .icons.major li {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin: 1rem 0;
       }
     }
@@ -98,25 +105,30 @@
       text-align: center;
       line-height: inherit;
     }
-    ul.icons.major li .label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
-    ul.icons.major li a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.5em;
-    }
     .fab.fa-github {
       font-family: "Font Awesome 5 Brands" !important;
       font-weight: 400;
+    }
+    /* Updated styles for navigation icons and titles */
+    ul.icons.major li a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      text-decoration: none;
+    }
+    ul.icons.major li .label {
+      display: block;
+      margin-top: 0.5em;
+      font-size: 0.9em;
+      color: #2c3e50;
+      text-align: center;
+    }
+    @media screen and (max-width: 736px) {
+      ul.icons.major li .label {
+        font-size: 0.8em;
+      }
     }
     /* Tic-Tac-Toe Game Styles */
     #tic-tac-toe {
@@ -263,7 +275,7 @@
   <section id="two" class="wrapper">
     <div class="inner alt">
       <section class="spotlight">
-        <div class="image"><img src="images\nobel_script.png" alt="Internship Script" style="max-width: 100%; height: auto;" /></div>
+        <div class="image"><img src="images/nobel_script.png" alt="Internship Script" style="max-width: 100%; height: auto;" /></div>
         <div class="content">
           <h3>First Month Learning Update</h3>
           <p>May 27, 2025 - My first month coding during my internship, DataCamp, and with <em>Automate the Boring Stuff</em>.</p>
