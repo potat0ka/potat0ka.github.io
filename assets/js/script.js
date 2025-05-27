@@ -14,10 +14,6 @@ function startGame() {
   const playerXInput = document.getElementById('playerX').value || 'Player X';
   const playerOInput = document.getElementById('playerO').value || 'Player O';
   playerNames = { X: playerXInput, O: playerOInput };
-  resetGame();
-}
-
-function resetGame() {
   board = ['', '', '', '', '', '', '', '', ''];
   currentPlayer = 'X';
   gameActive = true;
@@ -51,13 +47,11 @@ function handleCellClick(e) {
     document.getElementById('status').textContent = `${playerNames[currentPlayer]} wins!`;
     gameActive = false;
     updateScoreboard();
-    addRestartButton();
     return;
   }
   if (board.every(cell => cell)) {
     document.getElementById('status').textContent = "It's a draw!";
     gameActive = false;
-    addRestartButton();
     return;
   }
 
@@ -81,17 +75,5 @@ function updateScoreboard() {
   document.getElementById('highScore').textContent = `High Score: ${highScore}`;
 }
 
-function addRestartButton() {
-  const gameControls = document.querySelector('.game-controls');
-  let restartButton = document.getElementById('restartButton');
-  if (!restartButton) {
-    restartButton = document.createElement('button');
-    restartButton.id = 'restartButton';
-    restartButton.textContent = 'Restart Game';
-    restartButton.addEventListener('click', resetGame);
-    gameControls.appendChild(restartButton);
-  }
-}
-
-// Initialize game (disabled initial render to require Start Game click)
-document.getElementById('status').textContent = 'Click "Start Game" to begin';
+// Initialize game
+renderBoard();
