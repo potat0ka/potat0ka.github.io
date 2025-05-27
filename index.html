@@ -7,7 +7,7 @@
   <meta name="description" content="Bigendra Shrestha's coding journey through internships, DataCamp courses, coding books, and real-life experiences." />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <!-- Add Font Awesome CDN -->
+  <!-- Font Awesome CDN (Version 5.15.4 for solid icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     /* Ensure navigation icons stack on small screens */
@@ -65,6 +65,26 @@
       .event.right { left: 0; }
       .event::before { left: 12px; right: auto; }
     }
+    /* Center header content */
+    #header {
+      text-align: center;
+    }
+    #header .content {
+      margin: 0 auto;
+      max-width: 80%;
+    }
+    #header .image.phone {
+      margin: 0 auto;
+      display: block;
+    }
+    @media screen and (max-width: 736px) {
+      #header .content {
+        max-width: 100%;
+      }
+      #header .image.phone {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body class="is-preload">
@@ -72,8 +92,7 @@
   <header id="header">
     <div class="content">
       <h1><a href="#">Bigendra Shrestha's Learning Journey</a></h1>
-      <p>Documenting my growth as a coder through my internship,<br />
-      DataCamp courses, coding books, and real-life experiences.</p>
+      <p>Documenting my growth as a coder through my internship,<br />DataCamp courses, coding books, and real-life experiences.</p>
       <ul class="actions">
         <li><a href="#one" class="button icon solid fa-chevron-down scrolly">Explore</a></li>
       </ul>
@@ -87,11 +106,11 @@
       <h2>Explore My Journey</h2>
     </header>
     <ul class="icons major">
-      <li><a href="posts/internship/internship.html" class="icon solid fa-briefcase"><span class="label">Internship</span></a></li>
-      <li><a href="posts/datacamp/datacamp.html" class="icon solid fa-graduation-cap"><span class="label">DataCamp Courses</span></a></li>
-      <li><a href="posts/books/books.html" class="icon solid fa-book"><span class="label">Coding Books</span></a></li>
-      <li><a href="posts/experiences/experiences.html" class="icon solid fa-heart"><span class="label">Real-Life Experiences</span></a></li>
-      <li><a href="about.html" class="icon solid fa-user"><span class="label">About Me</span></a></li>
+      <li><a href="posts/internship/internship.html" class="fas fa-briefcase"><span class="label">Internship</span></a></li>
+      <li><a href="posts/datacamp/datacamp.html" class="fas fa-graduation-cap"><span class="label">DataCamp Courses</span></a></li>
+      <li><a href="posts/books/books.html" class="fas fa-book"><span class="label">Coding Books</span></a></li>
+      <li><a href="posts/experiences/experiences.html" class="fas fa-heart"><span class="label">Real-Life Experiences</span></a></li>
+      <li><a href="about.html" class="fas fa-user"><span class="label">About Me</span></a></li>
     </ul>
   </section>
 
