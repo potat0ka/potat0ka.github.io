@@ -1,1 +1,2 @@
-# potat0ka.github.io
+title: [Learning Data Science]
+description: [Day: 1 ]
