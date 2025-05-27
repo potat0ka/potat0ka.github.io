@@ -8,271 +8,18 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
-  <style>
-    /* Existing styles */
-    @media screen and (max-width: 736px) {
-      .icons.major {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .icons.major li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 1rem 0;
-      }
-    }
-    .timeline {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px 0;
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: #2c3e50;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-    .event {
-      padding: 10px 20px;
-      position: relative;
-      width: 45%;
-      margin-bottom: 20px;
-    }
-    .event.left { left: 0; }
-    .event.right { left: 55%; }
-    .event::before {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background-color: #3498db;
-      border-radius: 50%;
-      top: 20px;
-      right: -8px;
-    }
-    .event.left::before { right: auto; left: -8px; }
-    .event-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 6px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
-    @media screen and (max-width: 736px) {
-      .timeline::before { left: 20px; }
-      .event { width: 100%; left: 0; padding-left: 40px; }
-      .event.right { left: 0; }
-      .event::before { left: 12px; right: auto; }
-    }
-    #header {
-      text-align: center;
-    }
-    #header .content {
-      margin: 0 auto;
-      max-width: 80%;
-      text-align: center;
-    }
-    #header .image.phone {
-      margin: 0 auto;
-      display: block;
-    }
-    #header .actions {
-      justify-content: center;
-      display: flex;
-      margin-top: 1em;
-    }
-    @media screen and (max-width: 736px) {
-      #header .content {
-        max-width: 100%;
-      }
-      #header .image.phone {
-        width: 100%;
-      }
-      #header .actions {
-        margin-top: 0.5em;
-      }
-    }
-    .fas, .fab {
-      font-family: "Font Awesome 5 Free" !important;
-      font-weight: 900;
-      display: inline-block;
-      text-align: center;
-      line-height: inherit;
-    }
-    .fab.fa-github {
-      font-family: "Font Awesome 5 Brands" !important;
-      font-weight: 400;
-    }
-    /* Updated styles for navigation icons and titles */
-    ul.icons.major li {
-      display: inline-block;
-      text-align: center;
-    }
-    ul.icons.major li a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-    }
-    ul.icons.major li a .icon-wrapper {
-      display: block;
-      width: 3.5em;
-      height: 3.5em;
-      line-height: 3.5em;
-      text-align: center;
-      font-size: 1.5em;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.075);
-      transition: background-color 0.3s;
-    }
-    ul.icons.major li a:hover .icon-wrapper {
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-    ul.icons.major li .label {
-      display: block;
-      margin-top: 0.75em;
-      font-size: 1em;
-      font-weight: 600;
-      color: #666;
-      text-align: center;
-    }
-    @media screen and (max-width: 736px) {
-      ul.icons.major li .label {
-        font-size: 0.9em;
-        margin-top: 0.5em;
-      }
-    }
-    /* Tic-Tac-Toe Game Styles */
-    #tic-tac-toe {
-      padding: 2em 0;
-    }
-    .game-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .game-board {
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-gap: 5px;
-      background-color: #2c3e50;
-      padding: 5px;
-      border-radius: 8px;
-    }
-    .cell {
-      width: 100px;
-      height: 100px;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2em;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    .cell:hover {
-      background-color: #f0f0f0;
-    }
-    .cell.x {
-      color: #e27689;
-    }
-    .cell.o {
-      color: #3498db;
-    }
-    .scoreboard {
-      flex: 1;
-      min-width: 300px;
-      background-color: #fff;
-      padding: 1em;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
-    .scoreboard h3 {
-      margin-top: 0;
-      color: #2c3e50;
-    }
-    .scoreboard ul {
-      list-style: none;
-      padding: 0;
-    }
-    .scoreboard li {
-      padding: 0.5em 0;
-      border-bottom: 1px solid #dbdbdb;
-    }
-    .high-score {
-      margin-top: 1em;
-      font-weight: bold;
-      color: #3498db;
-    }
-    .game-controls {
-      margin-top: 1em;
-      text-align: center;
-    }
-    .game-controls input {
-      padding: 0.5em;
-      margin: 0.5em;
-      border: 1px solid #dbdbdb;
-      border-radius: 4px;
-    }
-    .game-controls button {
-      padding: 0.5em 1em;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .game-controls button:hover {
-      background-color: #2980b9;
-    }
-    .status {
-      text-align: center;
-      margin: 1em 0;
-      font-size: 1.2em;
-      color: #2c3e50;
-    }
-    @media screen and (max-width: 736px) {
-      .game-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .game-board {
-        grid-template-columns: repeat(3, 80px);
-      }
-      .cell {
-        width: 80px;
-        height: 80px;
-        font-size: 1.5em;
-      }
-      .scoreboard {
-        width: 100%;
-        min-width: unset;
-      }
-    }
-  </style>
 </head>
 <body class="is-preload">
   <!-- Header -->
   <header id="header">
     <div class="content">
       <h1><a href="#">Bigendra Shrestha's Learning Journey</a></h1>
-      <p>Documenting my growth as a coder through my internship,<br />DataCamp courses, coding books, and real-life experiences.</p>
+      <p>Documenting my growth as a coder through my internship, DataCamp courses, coding books, and real-life experiences.</p>
       <ul class="actions">
         <li><a href="#one" class="button scrolly">Explore</a></li>
       </ul>
     </div>
-    <div class="image phone"><div class="inner"><img src="images/myphoto.jpg" alt="Bigendra's coding screenshot" style="max-width: 100%; height: auto;" /></div></div>
+    <div class="image phone"><div class="inner"><img src="images/myphoto.jpg" alt="Bigendra's coding screenshot" /></div></div>
   </header>
 
   <!-- Navigation -->
@@ -293,135 +40,118 @@
   <section id="two" class="wrapper">
     <div class="inner alt">
       <section class="spotlight">
-        <div class="image"><img src="images/nobel_script.png" alt="Internship Script" style="max-width: 100%; height: auto;" /></div>
+        <div class="image"><img src="images/nobel_script.png" alt="Internship Script" /></div>
         <div class="content">
           <h3>First Month Learning Update</h3>
-          <p>May 27, 2025 - My first month coding during my internship, DataCamp, and with <em>Automate the Boring Stuff</em>.</p>
-          <a href="posts/2025-05-27-learning-update.html" class="button small">Read More</a>
+          <p>08:53 PM +0545, Tuesday, May 27, 2025 - My first month coding during my internship, DataCamp, and with <em>Automate the Boring Stuff</em>.</p>
+          <a href="posts/2025-05-27-learning-update.html" class="button">Read More</a>
+        </div>
+      </section>
+      <section class="spotlight">
+        <div class="image"><img src="images/datacamp_cert.png" alt="DataCamp Certificate" /></div>
+        <div class="content">
+          <h3>Completed DataCamp Course</h3>
+          <p>May 2025 - Finished my first DataCamp course on Python basics.</p>
+          <a href="posts/datacamp-course-completed.html" class="button">Read More</a>
         </div>
       </section>
     </div>
   </section>
 
-  <!-- Timeline -->
-  <section id="three" class="wrapper style2 special">
-    <header class="major">
-      <h2>My Learning Timeline</h2>
-      <p>A journey through my coding milestones</p>
-    </header>
-    <div class="inner alt">
-      <div class="timeline">
-        <div class="event left">
-          <div class="event-content">
-            <h3>March 2025</h3>
-            <p>Started internship: Learned Python scripting for data automation.</p>
-          </div>
-        </div>
-        <div class="event right">
-          <div class="event-content">
-            <h3>May 2025</h3>
-            <p>Completed DataCamp's "Introduction to Python" course.</p>
-          </div>
-        </div>
-        <div class="event left">
-          <div class="event-content">
-            <h3>May 2025</h3>
-            <p>Read <em>Automate the Boring Stuff with Python</em>: Mastered file handling.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Tic-Tac-Toe Game -->
-  <section id="four" class="wrapper style2 special">
+  <section id="tic-tac-toe" class="wrapper style3">
     <header class="major">
       <h2>Play Tic-Tac-Toe</h2>
-      <p>Challenge a friend and track your scores!</p>
+      <p>Test your skills with a classic game!</p>
     </header>
-    <div class="inner">
-      <div class="game-container">
-        <div>
-          <div class="game-board" id="gameBoard"></div>
-          <div class="status" id="status">Enter names and click Start Game!</div>
-          <div class="game-controls">
-            <input type="text" id="playerX" placeholder="Player X Name" />
-            <input type="text" id="playerO" placeholder="Player O Name" />
-            <button onclick="startGame()">Start Game</button>
-            <button onclick="resetGame()">Reset Game</button>
-          </div>
-        </div>
-        <div class="scoreboard">
-          <h3>Scoreboard</h3>
-          <ul id="scoreList"></ul>
-          <div class="high-score" id="highScore"></div>
-        </div>
+    <div class="game-container">
+      <div class="game-board" id="gameBoard"></div>
+      <div class="scoreboard">
+        <h3>Scoreboard</h3>
+        <ul id="scoreboard"></ul>
+        <div class="high-score" id="highScore">High Score: 0</div>
       </div>
+    </div>
+    <div class="game-controls">
+      <input type="text" id="playerX" placeholder="Player X Name" />
+      <input type="text" id="playerO" placeholder="Player O Name" />
+      <button onclick="startGame()">Start Game</button>
+      <div class="status" id="status">Game not started</div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer id="footer">
     <ul class="icons">
-      <li><a href="https://github.com/potat0ka" class="fab fa-github"><span class="label">GitHub</span></a></li>
+      <li><a href="https://github.com/bigendra" class="icon fab fa-github"><span class="label">GitHub</span></a></li>
+      <li><a href="mailto:bigendra@example.com" class="icon fas fa-envelope"><span class="label">Email</span></a></li>
     </ul>
-    <p class="copyright">© 2025 Bigendra Shrestha. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+    <div class="copyright">
+      &copy; Bigendra Shrestha. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.
+    </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.scrolly.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
   <script>
-    // Tic-Tac-Toe Game Logic
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let gameActive = false;
-    let playerXName = '';
-    let playerOName = '';
-    let scores = JSON.parse(localStorage.getItem('ticTacToeScores')) || {};
+    let scores = { X: 0, O: 0 };
+    let playerNames = { X: 'Player X', O: 'Player O' };
 
     const winningCombinations = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
       [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-      [0, 4, 8], [2, 4, 6] // Diagonals
+      [0, 4, 8], [2, 4, 6]             // Diagonals
     ];
 
-    function createBoard() {
-      const gameBoard = document.getElementById('gameBoard');
-      gameBoard.innerHTML = '';
+    function startGame() {
+      const playerXInput = document.getElementById('playerX').value || 'Player X';
+      const playerOInput = document.getElementById('playerO').value || 'Player O';
+      playerNames = { X: playerXInput, O: playerOInput };
       board = ['', '', '', '', '', '', '', '', ''];
-      for (let i = 0; i < 9; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.setAttribute('data-index', i);
-        cell.addEventListener('click', () => handleCellClick(i));
-        gameBoard.appendChild(cell);
-      }
+      currentPlayer = 'X';
+      gameActive = true;
+      document.getElementById('status').textContent = `${playerNames.X}'s turn`;
+      renderBoard();
+      updateScoreboard();
     }
 
-    function handleCellClick(index) {
-      if (!gameActive || board[index] !== '') return;
+    function renderBoard() {
+      const gameBoard = document.getElementById('gameBoard');
+      gameBoard.innerHTML = '';
+      board.forEach((cell, index) => {
+        const cellElement = document.createElement('div');
+        cellElement.classList.add('cell');
+        if (cell) cellElement.classList.add(cell.toLowerCase());
+        cellElement.setAttribute('data-index', index);
+        cellElement.addEventListener('click', handleCellClick);
+        gameBoard.appendChild(cellElement);
+      });
+    }
+
+    function handleCellClick(e) {
+      const index = e.target.getAttribute('data-index');
+      if (board[index] || !gameActive) return;
+
       board[index] = currentPlayer;
-      const cell = document.querySelector(`.cell[data-index="${index}"]`);
-      cell.textContent = currentPlayer;
-      cell.classList.add(currentPlayer.toLowerCase());
+      renderBoard();
+
       if (checkWin()) {
-        const winnerName = currentPlayer === 'X' ? playerXName : playerOName;
-        document.getElementById('status').textContent = `${winnerName} wins!`;
-        updateScores(winnerName);
+        scores[currentPlayer]++;
+        document.getElementById('status').textContent = `${playerNames[currentPlayer]} wins!`;
         gameActive = false;
-      } else if (board.every(cell => cell !== '')) {
+        updateScoreboard();
+        return;
+      }
+      if (board.every(cell => cell)) {
         document.getElementById('status').textContent = "It's a draw!";
         gameActive = false;
-      } else {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        const currentPlayerName = currentPlayer === 'X' ? playerXName : playerOName;
-        document.getElementById('status').textContent = `${currentPlayerName}'s turn (${currentPlayer})`;
+        return;
       }
+
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      document.getElementById('status').textContent = `${playerNames[currentPlayer]}'s turn`;
     }
 
     function checkWin() {
@@ -430,50 +160,18 @@
       });
     }
 
-    function startGame() {
-      playerXName = document.getElementById('playerX').value || 'Player X';
-      playerOName = document.getElementById('playerO').value || 'Player O';
-      if (!scores[playerXName]) scores[playerXName] = 0;
-      if (!scores[playerOName]) scores[playerOName] = 0;
-      resetGame();
-      gameActive = true;
-      document.getElementById('status').textContent = `${playerXName}'s turn (X)`;
-      updateScoreboard();
-    }
-
-    function resetGame() {
-      currentPlayer = 'X';
-      gameActive = false;
-      createBoard();
-      document.getElementById('status').textContent = `${playerXName}'s turn (X)`;
-    }
-
-    function updateScores(winnerName) {
-      scores[winnerName] = (scores[winnerName] || 0) + 1;
-      localStorage.setItem('ticTacToeScores', JSON.stringify(scores));
-      updateScoreboard();
-    }
-
     function updateScoreboard() {
-      const scoreList = document.getElementById('scoreList');
-      scoreList.innerHTML = '';
-      for (const player in scores) {
-        const li = document.createElement('li');
-        li.textContent = `${player}: ${scores[player]} wins`;
-        scoreList.appendChild(li);
-      }
-      const highScorePlayer = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, null);
-      const highScoreElement = document.getElementById('highScore');
-      if (highScorePlayer) {
-        highScoreElement.textContent = `High Score: ${highScorePlayer} with ${scores[highScorePlayer]} wins`;
-      } else {
-        highScoreElement.textContent = 'High Score: No games played yet';
-      }
+      const scoreboard = document.getElementById('scoreboard');
+      scoreboard.innerHTML = `
+        <li>${playerNames.X}: ${scores.X}</li>
+        <li>${playerNames.O}: ${scores.O}</li>
+      `;
+      let highScore = Math.max(scores.X, scores.O);
+      document.getElementById('highScore').textContent = `High Score: ${highScore}`;
     }
 
-    // Initialize the game
-    createBoard();
-    updateScoreboard();
+    // Initialize game
+    renderBoard();
   </script>
 </body>
 </html>
