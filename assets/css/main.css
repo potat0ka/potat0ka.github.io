@@ -1602,7 +1602,7 @@ ol {
   }
 
 ul {
--Йlist-style: disc;
+  list-style: disc;
   margin: 0 0 2em 0;
   padding-left: 1.25em;
 }
@@ -2475,7 +2475,7 @@ ul.icons.major li .label {
 /* Tic-Tac-Toe Game Section */
 #tic-tac-toe {
   padding: 4em 0;
-  background-color: #fff;
+  background: linear-gradient(135deg, #e6f0fa 0%, #ffffff 100%);
 }
 
 .game-container {
@@ -2490,28 +2490,37 @@ ul.icons.major li .label {
 .game-board {
   display: grid;
   grid-template-columns: repeat(3, 120px);
-  grid-gap: 8px;
-  background-color: #dbdbdb;
-  padding: 8px;
-  border-radius: 6px;
+  grid-gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  padding: 12px;
+  transition: transform 0.3s ease;
+}
+
+.game-board:hover {
+  transform: scale(1.02);
 }
 
 .cell {
   width: 120px;
   height: 120px;
-  background-color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.5em;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .cell:hover {
-  background-color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.1);
 }
 
 .cell.x {
@@ -2523,17 +2532,20 @@ ul.icons.major li .label {
 }
 
 .scoreboard {
-  background-color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.9);
   padding: 1.5em;
-  border-radius: 6px;
+  border-radius: 12px;
   text-align: center;
   min-width: 200px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .scoreboard h3 {
   margin-bottom: 1em;
-  font-size: 1.35em;
-  color: #555;
+  font-size: 1.5em;
+  color: #2c3e50;
+  font-weight: 700;
 }
 
 .scoreboard ul {
@@ -2543,22 +2555,22 @@ ul.icons.major li .label {
 }
 
 .scoreboard ul li {
-  font-size: 1em;
-  margin: 0.5em 0;
-  color: #555;
+  font-size: 1.1em;
+  margin: 0.75em 0;
+  color: #34495e;
 }
 
 .high-score {
-  font-weight: 600;
+  font-weight: 700;
   color: #2c3e50;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .game-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+  gap: 1.2em;
   margin-top: 2em;
   max-width: 400px;
   margin-left: auto;
@@ -2568,24 +2580,45 @@ ul.icons.major li .label {
 .game-controls input {
   width: 100%;
   max-width: 300px;
-  padding: 0.75em;
-  border: solid 1px #dbdbdb;
-  border-radius: 4px;
+  padding: 0.9em;
+  border: none;
+  border-radius: 8px;
   font-size: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.game-controls input:focus {
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.3);
+  transform: scale(1.02);
+  outline: none;
 }
 
 .game-controls button {
   width: 100%;
   max-width: 200px;
-  padding: 0.75em;
-  font-size: 1em;
+  padding: 0.9em;
+  font-size: 1.1em;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.game-controls button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .status {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 600;
-  color: #555;
-  margin-top: 1em;
+  color: #2c3e50;
+  margin-top: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 736px) {
@@ -2596,7 +2629,7 @@ ul.icons.major li .label {
   .game-container {
     flex-direction: column;
     align-items: center;
-    gap: 2em;
+    gap: 1.5em;
   }
 
   .game-board {
@@ -2640,7 +2673,7 @@ ul.icons.major li .label {
   }
 
   .status {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 }
 
