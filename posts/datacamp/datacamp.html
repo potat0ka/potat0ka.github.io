@@ -15,10 +15,18 @@
       font-weight: 400;
     }
     /* Center the Back to Home button */
-    .actions {
+    #header .content {
+      text-align: center;
+    }
+    #header .actions {
       justify-content: center;
       display: flex;
       margin-top: 1em;
+    }
+    @media screen and (max-width: 736px) {
+      #header .actions {
+        margin-top: 0.5em;
+      }
     }
   </style>
 </head>
