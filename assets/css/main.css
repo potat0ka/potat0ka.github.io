@@ -1973,8 +1973,7 @@ ul.icons.major li .icon:before {
     font-size: 1.5em;
 }
 
-ul.icons.major li > a {
-    border: 0;
+ul.icons.major li a {
     border-radius: 100%;
     display: inline-block;
     height: 5em;
@@ -1985,7 +1984,7 @@ ul.icons.major li > a {
     border: solid 2px #dbdbdb;
 }
 
-ul.icons.major li > a:hover {
+ul.icons.major li a:hover {
     background-color: #E27689;
     border-color: #E27689;
     color: #fff !important;

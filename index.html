@@ -7,8 +7,8 @@
   <meta name="description" content="Bigendra Shrestha's coding journey through internships, DataCamp courses, coding books, and real-life experiences." />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <!-- Font Awesome CDN (Version 5.15.4 for solid icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome CDN (Switch to a simpler link without integrity for reliability) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
   <style>
     /* Ensure navigation icons stack on small screens */
     @media screen and (max-width: 736px) {
@@ -72,16 +72,16 @@
     #header .content {
       margin: 0 auto;
       max-width: 80%;
-      text-align: center; /* Ensure text and actions are centered */
+      text-align: center;
     }
     #header .image.phone {
       margin: 0 auto;
       display: block;
     }
     #header .actions {
-      justify-content: center; /* Center the actions list */
-      display: flex; /* Ensure flex behavior */
-      margin-top: 1em; /* Add spacing above the button */
+      justify-content: center;
+      display: flex;
+      margin-top: 1em;
     }
     @media screen and (max-width: 736px) {
       #header .content {
@@ -91,8 +91,34 @@
         width: 100%;
       }
       #header .actions {
-        margin-top: 0.5em; /* Adjust spacing on mobile */
+        margin-top: 0.5em;
       }
+    }
+    /* Force Font Awesome styling for icons */
+    .fas, .fab {
+      font-family: "Font Awesome 5 Free" !important;
+      font-weight: 900; /* Solid icons require font-weight 900 */
+      display: inline-block;
+      text-align: center;
+      line-height: inherit;
+    }
+    /* Ensure labels are hidden visually but accessible */
+    ul.icons.major li .label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    /* Center icons inside the circular buttons */
+    ul.icons.major li a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em; /* Match the size from main.css */
     }
   </style>
 </head>
