@@ -110,24 +110,42 @@
       font-weight: 400;
     }
     /* Updated styles for navigation icons and titles */
+    ul.icons.major li {
+      display: inline-block;
+      text-align: center;
+    }
     ul.icons.major li a {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      font-size: 1.5em;
       text-decoration: none;
+    }
+    ul.icons.major li a .icon-wrapper {
+      display: block;
+      width: 3.5em;
+      height: 3.5em;
+      line-height: 3.5em;
+      text-align: center;
+      font-size: 1.5em;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.075);
+      transition: background-color 0.3s;
+    }
+    ul.icons.major li a:hover .icon-wrapper {
+      background-color: rgba(255, 255, 255, 0.15);
     }
     ul.icons.major li .label {
       display: block;
-      margin-top: 0.5em;
-      font-size: 0.9em;
-      color: #2c3e50;
+      margin-top: 0.75em;
+      font-size: 1em;
+      font-weight: 600;
+      color: #666;
       text-align: center;
     }
     @media screen and (max-width: 736px) {
       ul.icons.major li .label {
-        font-size: 0.8em;
+        font-size: 0.9em;
+        margin-top: 0.5em;
       }
     }
     /* Tic-Tac-Toe Game Styles */
@@ -263,11 +281,11 @@
       <h2>Explore My Journey</h2>
     </header>
     <ul class="icons major">
-      <li><a href="posts/internship/internship.html" class="fas fa-briefcase"><span class="label">Internship</span></a></li>
-      <li><a href="posts/datacamp/datacamp.html" class="fas fa-graduation-cap"><span class="label">DataCamp Courses</span></a></li>
-      <li><a href="posts/books/books.html" class="fas fa-book"><span class="label">Coding Books</span></a></li>
-      <li><a href="posts/experiences/experiences.html" class="fas fa-heart"><span class="label">Real-Life Experiences</span></a></li>
-      <li><a href="about.html" class="fas fa-user"><span class="label">About Me</span></a></li>
+      <li><a href="posts/internship/internship.html"><span class="icon-wrapper"><i class="fas fa-briefcase"></i></span><span class="label">Internship</span></a></li>
+      <li><a href="posts/datacamp/datacamp.html"><span class="icon-wrapper"><i class="fas fa-graduation-cap"></i></span><span class="label">DataCamp Courses</span></a></li>
+      <li><a href="posts/books/books.html"><span class="icon-wrapper"><i class="fas fa-book"></i></span><span class="label">Coding Books</span></a></li>
+      <li><a href="posts/experiences/experiences.html"><span class="icon-wrapper"><i class="fas fa-heart"></i></span><span class="label">Real-Life Experiences</span></a></li>
+      <li><a href="about.html"><span class="icon-wrapper"><i class="fas fa-user"></i></span><span class="label">About Me</span></a></li>
     </ul>
   </section>
 
