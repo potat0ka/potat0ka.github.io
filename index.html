@@ -72,10 +72,16 @@
     #header .content {
       margin: 0 auto;
       max-width: 80%;
+      text-align: center; /* Ensure text and actions are centered */
     }
     #header .image.phone {
       margin: 0 auto;
       display: block;
+    }
+    #header .actions {
+      justify-content: center; /* Center the actions list */
+      display: flex; /* Ensure flex behavior */
+      margin-top: 1em; /* Add spacing above the button */
     }
     @media screen and (max-width: 736px) {
       #header .content {
@@ -83,6 +89,9 @@
       }
       #header .image.phone {
         width: 100%;
+      }
+      #header .actions {
+        margin-top: 0.5em; /* Adjust spacing on mobile */
       }
     }
   </style>
