@@ -7,17 +7,15 @@
   <meta name="description" content="Bigendra Shrestha's coding journey through internships, DataCamp courses, coding books, and real-life experiences." />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <!-- Font Awesome CDN (Switch to a simpler link without integrity for reliability) -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous" />
   <style>
-    /* Ensure navigation icons stack on small screens */
+    /* Existing styles */
     @media screen and (max-width: 736px) {
       .icons.major li {
         display: block;
         margin: 1rem 0;
       }
     }
-    /* Timeline styling */
     .timeline {
       max-width: 800px;
       margin: 0 auto;
@@ -65,7 +63,6 @@
       .event.right { left: 0; }
       .event::before { left: 12px; right: auto; }
     }
-    /* Center header content */
     #header {
       text-align: center;
     }
@@ -94,15 +91,13 @@
         margin-top: 0.5em;
       }
     }
-    /* Force Font Awesome styling for icons */
     .fas, .fab {
       font-family: "Font Awesome 5 Free" !important;
-      font-weight: 900; /* Solid icons require font-weight 900 */
+      font-weight: 900;
       display: inline-block;
       text-align: center;
       line-height: inherit;
     }
-    /* Ensure labels are hidden visually but accessible */
     ul.icons.major li .label {
       position: absolute;
       width: 1px;
@@ -113,12 +108,127 @@
       clip: rect(0, 0, 0, 0);
       border: 0;
     }
-    /* Center icons inside the circular buttons */
     ul.icons.major li a {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.5em; /* Match the size from main.css */
+      font-size: 1.5em;
+    }
+    .fab.fa-github {
+      font-family: "Font Awesome 5 Brands" !important;
+      font-weight: 400;
+    }
+    /* Tic-Tac-Toe Game Styles */
+    #tic-tac-toe {
+      padding: 2em 0;
+    }
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+      background-color: #2c3e50;
+      padding: 5px;
+      border-radius: 8px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .cell:hover {
+      background-color: #f0f0f0;
+    }
+    .cell.x {
+      color: #e27689;
+    }
+    .cell.o {
+      color: #3498db;
+    }
+    .scoreboard {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .scoreboard h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .scoreboard ul {
+      list-style: none;
+      padding: 0;
+    }
+    .scoreboard li {
+      padding: 0.5em 0;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    .high-score {
+      margin-top: 1em;
+      font-weight: bold;
+      color: #3498db;
+    }
+    .game-controls {
+      margin-top: 1em;
+      text-align: center;
+    }
+    .game-controls input {
+      padding: 0.5em;
+      margin: 0.5em;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+    }
+    .game-controls button {
+      padding: 0.5em 1em;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .game-controls button:hover {
+      background-color: #2980b9;
+    }
+    .status {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.2em;
+      color: #2c3e50;
+    }
+    @media screen and (max-width: 736px) {
+      .game-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .game-board {
+        grid-template-columns: repeat(3, 80px);
+      }
+      .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5em;
+      }
+      .scoreboard {
+        width: 100%;
+        min-width: unset;
+      }
     }
   </style>
 </head>
@@ -129,7 +239,7 @@
       <h1><a href="#">Bigendra Shrestha's Learning Journey</a></h1>
       <p>Documenting my growth as a coder through my internship,<br />DataCamp courses, coding books, and real-life experiences.</p>
       <ul class="actions">
-        <li><a href="#one" class="button icon solid fa-chevron-down scrolly">Explore</a></li>
+        <li><a href="#one" class="button scrolly">Explore</a></li>
       </ul>
     </div>
     <div class="image phone"><div class="inner"><img src="images/myphoto.jpg" alt="Bigendra's coding screenshot" style="max-width: 100%; height: auto;" /></div></div>
@@ -193,10 +303,37 @@
     </div>
   </section>
 
+  <!-- Tic-Tac-Toe Game -->
+  <section id="four" class="wrapper style2 special">
+    <header class="major">
+      <h2>Play Tic-Tac-Toe</h2>
+      <p>Challenge a friend and track your scores!</p>
+    </header>
+    <div class="inner">
+      <div class="game-container">
+        <div>
+          <div class="game-board" id="gameBoard"></div>
+          <div class="status" id="status">Enter names and click Start Game!</div>
+          <div class="game-controls">
+            <input type="text" id="playerX" placeholder="Player X Name" />
+            <input type="text" id="playerO" placeholder="Player O Name" />
+            <button onclick="startGame()">Start Game</button>
+            <button onclick="resetGame()">Reset Game</button>
+          </div>
+        </div>
+        <div class="scoreboard">
+          <h3>Scoreboard</h3>
+          <ul id="scoreList"></ul>
+          <div class="high-score" id="highScore"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer id="footer">
     <ul class="icons">
-      <li><a href="https://github.com/potat0ka" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+      <li><a href="https://github.com/potat0ka" class="fab fa-github"><span class="label">GitHub</span></a></li>
     </ul>
     <p class="copyright">© 2025 Bigendra Shrestha. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
   </footer>
@@ -208,5 +345,105 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // Tic-Tac-Toe Game Logic
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let currentPlayer = 'X';
+    let gameActive = false;
+    let playerXName = '';
+    let playerOName = '';
+    let scores = JSON.parse(localStorage.getItem('ticTacToeScores')) || {};
+
+    const winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+      [0, 4, 8], [2, 4, 6] // Diagonals
+    ];
+
+    function createBoard() {
+      const gameBoard = document.getElementById('gameBoard');
+      gameBoard.innerHTML = '';
+      board = ['', '', '', '', '', '', '', '', ''];
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.setAttribute('data-index', i);
+        cell.addEventListener('click', () => handleCellClick(i));
+        gameBoard.appendChild(cell);
+      }
+    }
+
+    function handleCellClick(index) {
+      if (!gameActive || board[index] !== '') return;
+      board[index] = currentPlayer;
+      const cell = document.querySelector(`.cell[data-index="${index}"]`);
+      cell.textContent = currentPlayer;
+      cell.classList.add(currentPlayer.toLowerCase());
+      if (checkWin()) {
+        const winnerName = currentPlayer === 'X' ? playerXName : playerOName;
+        document.getElementById('status').textContent = `${winnerName} wins!`;
+        updateScores(winnerName);
+        gameActive = false;
+      } else if (board.every(cell => cell !== '')) {
+        document.getElementById('status').textContent = "It's a draw!";
+        gameActive = false;
+      } else {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        const currentPlayerName = currentPlayer === 'X' ? playerXName : playerOName;
+        document.getElementById('status').textContent = `${currentPlayerName}'s turn (${currentPlayer})`;
+      }
+    }
+
+    function checkWin() {
+      return winningCombinations.some(combination => {
+        return combination.every(index => board[index] === currentPlayer);
+      });
+    }
+
+    function startGame() {
+      playerXName = document.getElementById('playerX').value || 'Player X';
+      playerOName = document.getElementById('playerO').value || 'Player O';
+      if (!scores[playerXName]) scores[playerXName] = 0;
+      if (!scores[playerOName]) scores[playerOName] = 0;
+      resetGame();
+      gameActive = true;
+      document.getElementById('status').textContent = `${playerXName}'s turn (X)`;
+      updateScoreboard();
+    }
+
+    function resetGame() {
+      currentPlayer = 'X';
+      gameActive = false;
+      createBoard();
+      document.getElementById('status').textContent = `${playerXName}'s turn (X)`;
+    }
+
+    function updateScores(winnerName) {
+      scores[winnerName] = (scores[winnerName] || 0) + 1;
+      localStorage.setItem('ticTacToeScores', JSON.stringify(scores));
+      updateScoreboard();
+    }
+
+    function updateScoreboard() {
+      const scoreList = document.getElementById('scoreList');
+      scoreList.innerHTML = '';
+      for (const player in scores) {
+        const li = document.createElement('li');
+        li.textContent = `${player}: ${scores[player]} wins`;
+        scoreList.appendChild(li);
+      }
+      const highScorePlayer = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, null);
+      const highScoreElement = document.getElementById('highScore');
+      if (highScorePlayer) {
+        highScoreElement.textContent = `High Score: ${highScorePlayer} with ${scores[highScorePlayer]} wins`;
+      } else {
+        highScoreElement.textContent = 'High Score: No games played yet';
+      }
+    }
+
+    // Initialize the game
+    createBoard();
+    updateScoreboard();
+  </script>
 </body>
 </html>
