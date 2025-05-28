@@ -17,7 +17,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 1.125rem; /* 18px */
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -29,17 +29,21 @@ body {
 /* Typography */
 h1, h2, h3, h4 {
   color: var(--secondary-color);
-  color: var(--secondary-color);
   font-weight: 600;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+h1 { font-size: 3rem; margin-bottom: 0.5rem; text-align: center; }
+h2 { font-size: 2.2rem; margin-bottom: 1rem; text-align: center; }
+h3 { font-size: 1.6rem; margin-bottom: 0.5rem; text-align: center; }
+h4 { font-size: 1.4rem; margin-bottom: 0.5rem; text-align: center; }
 
 p {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+header p, .event-content {
+  text-align: justify;
 }
 
 a {
@@ -82,20 +86,20 @@ a:hover {
 }
 
 .profile-photo {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin: 1rem auto;
   display: block;
-  border: 3px solid var(--primary-color);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 5px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-photo:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 #header .button {
@@ -107,7 +111,7 @@ a:hover {
   color: var(--white);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -200,12 +204,13 @@ a:hover {
   width: 45%;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .event:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5); /* Matches --primary-color */
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.6);
+  background-color: rgba(52, 152, 219, 0.1);
 }
 
 .event.left { left: 0; text-align: right; }
@@ -252,6 +257,7 @@ a:hover {
   background-color: var(--primary-color);
   color: var(--white);
   border-radius: 6px;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -295,7 +301,7 @@ a:hover {
   flex: 1;
   min-width: 200px;
   max-width: 300px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -305,25 +311,45 @@ a:hover {
   outline: none;
 }
 
+.player-name-input input.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
 .player-name-input input::placeholder {
   color: #aaa;
 }
 
 .player-name-input button {
   padding: 0.8rem 2rem;
-  background-color: var(--primary-color);
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-color));
   color: var(--white);
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .player-name-input button:hover {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.error-message {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 .game-container {
@@ -371,13 +397,19 @@ a:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   min-width: 200px;
+  border: 1px solid var(--primary-color);
 }
 
 .scoreboard h3 { margin-bottom: 1rem; }
 .scoreboard ul { list-style: none; margin-bottom: 1rem; }
 .scoreboard li { margin: 0.5rem 0; }
 #highScoresList { font-size: 1rem; color: var(--secondary-color); }
-#highScoresList li { padding: 0.5rem 0; }
+#highScoresList li {
+  padding: 0.5rem;
+  background-color: rgba(52, 152, 219, 0.05);
+  border-radius: 4px;
+  margin: 0.25rem 0;
+}
 
 .game-controls {
   display: flex;
@@ -389,28 +421,36 @@ a:hover {
 
 .game-controls button {
   padding: 0.8rem 2rem;
-  background-color: var(--primary-color);
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-color));
   color: var(--white);
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .game-controls button:hover {
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .status {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--white);
   background-color: var(--secondary-color);
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Footer */
@@ -432,6 +472,12 @@ a:hover {
   font-size: 2rem;
   color: var(--secondary-color);
   text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -440,19 +486,36 @@ a:hover {
   transform: scale(1.2);
 }
 
+#footer .icons a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
 #footer .copyright {
   font-size: 0.9rem;
   color: #777;
+  transition: color 0.3s ease;
+}
+
+#footer .copyright:hover {
+  color: var(--secondary-color);
 }
 
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.2rem; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.4rem; }
+  h4 { font-size: 1.2rem; }
+  body, p { font-size: 1rem; }
 
   .wrapper { padding: 2rem 0.5rem; }
-  .profile-photo { width: 120px; height: 120px; }
+  .profile-photo { width: 160px; height: 160px; }
   .explore-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
   .icon-circle { width: 60px; height: 60px; }
   .icon-circle i { font-size: 1.5rem; }
@@ -465,17 +528,20 @@ a:hover {
   .game-board { grid-template-columns: repeat(3, 70px); }
   .cell { width: 70px; height: 70px; font-size: 1.5rem; }
   .player-name-input { flex-direction: column; align-items: center; gap: 0.75rem; }
-  .player-name-input input { max-width: 250px; }
-  .game-controls button, .player-name-input button { padding: 0.7rem 1.5rem; }
-  #footer .icons a { font-size: 1.8rem; }
+  .player-name-input input { max-width: 250px; font-size: 1rem; }
+  .player-name-input button, .game-controls button { padding: 0.7rem 1.5rem; font-size: 1rem; }
+  .status { font-size: 1.1rem; }
+  #footer .icons a { font-size: 1.8rem; width: 36px; height: 36px; }
 }
 
 @media screen and (max-width: 480px) {
-  body { font-size: 14px; }
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.3rem; }
-  .profile-photo { width: 100px; height: 100px; }
+  body { font-size: 0.875rem; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+  h4 { font-size: 1rem; }
+  .profile-photo { width: 120px; height: 120px; }
   .game-board { grid-template-columns: repeat(3, 60px); }
   .cell { width: 60px; height: 60px; font-size: 1.2rem; }
-  #footer .icons a { font-size: 1.6rem; }
+  #footer .icons a { font-size: 1.6rem; width: 32px; height: 32px; }
 }

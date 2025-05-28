@@ -11,6 +11,7 @@ class TicTacToe {
     this.aiScoreDisplay = document.getElementById('aiScore');
     this.highScoresList = document.getElementById('highScoresList');
     this.gameBoard = document.getElementById('gameBoard');
+    this.nameError = document.getElementById('nameError');
 
     // Initialize game state
     this.playerName = localStorage.getItem('playerName') || 'Player';
@@ -56,8 +57,12 @@ class TicTacToe {
   startGame() {
     if (!this.playerName || this.playerName === 'Player') {
       this.status.textContent = 'Please enter and save your name first!';
+      this.nameError.textContent = 'Name cannot be empty!';
+      this.playerNameInput.classList.add('shake');
+      setTimeout(() => this.playerNameInput.classList.remove('shake'), 300);
       return;
     }
+    console.log('Starting new game');
     this.board = ['', '', '', '', '', '', '', '', ''];
     this.gameActive = true;
     this.currentPlayer = 'X';
@@ -67,10 +72,15 @@ class TicTacToe {
 
   // Reset the game
   resetGame() {
+    console.log('Resetting game');
     this.board = ['', '', '', '', '', '', '', '', ''];
     this.gameActive = false;
     this.currentPlayer = 'X';
+    this.playerScore = 0;
+    this.aiScore = 0;
     this.status.textContent = 'Game reset. Enter your name to start!';
+    this.updateScoreboard();
+    this.updateHighScores();
     this.createBoard();
   }
 
@@ -84,6 +94,7 @@ class TicTacToe {
       return;
     }
     if (this.checkDraw()) {
+      console.log('Draw detected');
       this.endGame(true);
       return;
     }
@@ -120,6 +131,7 @@ class TicTacToe {
       return;
     }
     if (this.checkDraw()) {
+      console.log('Draw detected in AI move');
       this.endGame(true);
       return;
     }
@@ -194,7 +206,12 @@ class TicTacToe {
   endGame(draw) {
     this.gameActive = false;
     if (draw) {
-      this.status.textContent = 'It\'s a draw!';
+      console.log('Ending game with draw, restarting in 0.5s');
+      this.status.textContent = 'It\'s a draw! New game in 0.5s...';
+      setTimeout(() => {
+        console.log('Triggering restart');
+        this.startGame();
+      }, 500);
     } else {
       if (this.currentPlayer === 'X') {
         this.playerScore++;
@@ -218,9 +235,11 @@ class TicTacToe {
       localStorage.setItem('playerName', this.playerName);
       this.status.textContent = `${this.playerName}'s turn (X) vs. AI (O)`;
       this.playerNameInput.value = '';
-      this.updateScoreboard();
+      this.nameError.textContent = '';
     } else {
-      this.status.textContent = 'Please enter a valid name!';
+      this.nameError.textContent = 'Please enter a valid name!';
+      this.playerNameInput.classList.add('shake');
+      setTimeout(() => this.playerNameInput.classList.remove('shake'), 300);
     }
   }
 
@@ -251,7 +270,7 @@ class TicTacToe {
     // Update high scores display
     this.highScoresList.innerHTML = '';
     if (this.highScores.length === 0) {
-      const li = document.createElement('li');
+      let li = document.createElement('li');
       li.textContent = 'No scores yet';
       this.highScoresList.appendChild(li);
     } else {
