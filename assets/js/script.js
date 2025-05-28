@@ -1,197 +1,268 @@
-// Select all necessary DOM elements
-const playerNameInput = document.getElementById('playerName');
-const saveNameBtn = document.getElementById('saveName');
-const playerNameDisplay = document.getElementById('playerNameDisplay');
-const status = document.getElementById('status');
-const startGameBtn = document.getElementById('startGame');
-const playerScoreDisplay = document.getElementById('playerScore');
-const aiScoreDisplay = document.getElementById('aiScore');
-const highScoreDisplay = document.getElementById('highScore');
-const gameBoard = document.getElementById('gameBoard');
+class TicTacToe {
+  constructor() {
+    // Cache DOM elements
+    this.playerNameInput = document.getElementById('playerName');
+    this.saveNameBtn = document.getElementById('saveName');
+    this.playerNameDisplay = document.getElementById('playerNameDisplay');
+    this.status = document.getElementById('status');
+    this.startGameBtn = document.getElementById('startGame');
+    this.resetGameBtn = document.getElementById('resetGame');
+    this.playerScoreDisplay = document.getElementById('playerScore');
+    this.aiScoreDisplay = document.getElementById('aiScore');
+    this.highScoresList = document.getElementById('highScoresList');
+    this.gameBoard = document.getElementById('gameBoard');
 
-// Load saved data from localStorage
-let playerName = localStorage.getItem('playerName') || 'Player';
-let playerScore = parseInt(localStorage.getItem('playerScore')) || 0;
-let aiScore = parseInt(localStorage.getItem('aiScore')) || 0;
-let highScore = parseInt(localStorage.getItem('highScore')) || 0;
+    // Initialize game state
+    this.playerName = localStorage.getItem('playerName') || 'Player';
+    this.playerScore = 0;
+    this.aiScore = 0;
+    this.highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.currentPlayer = 'X';
+    this.gameActive = false;
 
-playerNameDisplay.textContent = `${playerName}: `; // Update display with saved name
-playerScoreDisplay.textContent = playerScore;
-aiScoreDisplay.textContent = aiScore;
-highScoreDisplay.textContent = highScore;
+    this.winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+      [0, 4, 8], [2, 4, 6] // Diagonals
+    ];
 
-// Initialize the game board with 9 cells
-function createBoard() {
-  gameBoard.innerHTML = '';
-  for (let i = 0; i < 9; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.addEventListener('click', handleCellClick, { once: true });
-    gameBoard.appendChild(cell);
-  }
-}
+    // Bind event listeners
+    this.saveNameBtn.addEventListener('click', () => this.saveName());
+    this.startGameBtn.addEventListener('click', () => this.startGame());
+    this.resetGameBtn.addEventListener('click', () => this.resetGame());
+    this.gameBoard.addEventListener('keydown', (e) => this.handleKeydown(e));
 
-let board = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let gameActive = false;
-
-const winningCombinations = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-  [0, 4, 8], [2, 4, 6] // Diagonals
-];
-
-function startGame() {
-  if (!playerName || playerName === 'Player') {
-    status.textContent = 'Please enter and save your name first!';
-    return;
-  }
-  board = ['', '', '', '', '', '', '', '', ''];
-  gameActive = true;
-  currentPlayer = 'X';
-  status.textContent = `${playerName}'s turn (X)`;
-  createBoard();
-}
-
-function handleCellClick(e) {
-  const cell = e.target;
-  const index = Array.from(gameBoard.children).indexOf(cell);
-
-  if (board[index] !== '' || !gameActive) return;
-
-  placeMark(cell, index);
-  if (checkWin()) {
-    endGame(false);
-    return;
-  }
-  if (checkDraw()) {
-    endGame(true);
-    return;
+    // Initialize display
+    this.updateScoreboard();
+    this.updateHighScores();
+    this.createBoard();
   }
 
-  currentPlayer = 'O';
-  status.textContent = 'AI\'s turn (O)';
-  setTimeout(aiMove, 500);
-}
-
-function placeMark(cell, index) {
-  board[index] = currentPlayer;
-  cell.textContent = currentPlayer;
-  cell.classList.add(currentPlayer.toLowerCase());
-}
-
-function aiMove() {
-  const bestMove = minimax(board, 'O').index;
-  placeMark(gameBoard.children[bestMove], bestMove);
-  if (checkWin()) {
-    endGame(false);
-    return;
+  // Create the game board with 9 cells
+  createBoard() {
+    this.gameBoard.innerHTML = '';
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.setAttribute('tabindex', '0');
+      cell.setAttribute('aria-label', `Cell ${i + 1}, empty`);
+      cell.addEventListener('click', (e) => this.handleCellClick(e, i), { once: true });
+      this.gameBoard.appendChild(cell);
+    }
   }
-  if (checkDraw()) {
-    endGame(true);
-    return;
+
+  // Start a new game
+  startGame() {
+    if (!this.playerName || this.playerName === 'Player') {
+      this.status.textContent = 'Please enter and save your name first!';
+      return;
+    }
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.gameActive = true;
+    this.currentPlayer = 'X';
+    this.status.textContent = `${this.playerName}'s turn (X) vs. AI (O)`;
+    this.createBoard();
   }
-  currentPlayer = 'X';
-  status.textContent = `${playerName}'s turn (X)`;
-}
 
-function minimax(board, player) {
-  const availableSpots = board.map((spot, index) => spot === '' ? index : null).filter(x => x !== null);
+  // Reset the game
+  resetGame() {
+    this.board = ['', '', '', '', '', '', '', '', ''];
+    this.gameActive = false;
+    this.currentPlayer = 'X';
+    this.status.textContent = 'Game reset. Enter your name to start!';
+    this.createBoard();
+  }
 
-  if (checkWinForPlayer(board, 'X')) return { score: -10 };
-  if (checkWinForPlayer(board, 'O')) return { score: 10 };
-  if (availableSpots.length === 0) return { score: 0 };
+  // Handle cell click
+  handleCellClick(e, index) {
+    if (this.board[index] !== '' || !this.gameActive) return;
 
-  let moves = [];
+    this.placeMark(e.target, index);
+    if (this.checkWin()) {
+      this.endGame(false);
+      return;
+    }
+    if (this.checkDraw()) {
+      this.endGame(true);
+      return;
+    }
 
-  for (let i = 0; i < availableSpots.length; i++) {
-    let move = {};
-    move.index = availableSpots[i];
-    board[availableSpots[i]] = player;
+    this.currentPlayer = 'O';
+    this.status.textContent = 'AI\'s turn (O)';
+    setTimeout(() => this.aiMove(), Math.random() * 500 + 500);
+  }
 
+  // Handle keyboard navigation
+  handleKeydown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const index = Array.from(this.gameBoard.children).indexOf(e.target);
+      if (this.board[index] === '' && this.gameActive) {
+        this.handleCellClick(e, index);
+      }
+    }
+  }
+
+  // Place a mark on the board
+  placeMark(cell, index) {
+    this.board[index] = this.currentPlayer;
+    cell.textContent = this.currentPlayer;
+    cell.classList.add(this.currentPlayer.toLowerCase());
+    cell.setAttribute('aria-label', `Cell ${index + 1}, ${this.currentPlayer}`);
+  }
+
+  // AI move using minimax
+  aiMove() {
+    const bestMove = this.minimax(this.board, 'O').index;
+    this.placeMark(this.gameBoard.children[bestMove], bestMove);
+    if (this.checkWin()) {
+      this.endGame(false);
+      return;
+    }
+    if (this.checkDraw()) {
+      this.endGame(true);
+      return;
+    }
+    this.currentPlayer = 'X';
+    this.status.textContent = `${this.playerName}'s turn (X) vs. AI (O)`;
+  }
+
+  // Minimax algorithm to determine AI's best move
+  minimax(board, player) {
+    const availableSpots = board.map((spot, i) => spot === '' ? i : null).filter(x => x !== null);
+
+    if (this.checkWinForPlayer(board, 'X')) return { score: -10 };
+    if (this.checkWinForPlayer(board, 'O')) return { score: 10 };
+    if (availableSpots.length === 0) return { score: 0 };
+
+    let moves = [];
+    for (let i = 0; i < availableSpots.length; i++) {
+      let move = {};
+      move.index = availableSpots[i];
+      board[availableSpots[i]] = player;
+
+      if (player === 'O') {
+        move.score = this.minimax(board, 'X').score;
+      } else {
+        move.score = this.minimax(board, 'O').score;
+      }
+
+      board[availableSpots[i]] = '';
+      moves.push(move);
+    }
+
+    let bestMove;
     if (player === 'O') {
-      let result = minimax(board, 'X');
-      move.score = result.score;
+      let bestScore = -Infinity;
+      for (let i = 0; i < moves.length; i++) {
+        if (moves[i].score > bestScore) {
+          bestScore = moves[i].score;
+          bestMove = i;
+        }
+      }
     } else {
-      let result = minimax(board, 'O');
-      move.score = result.score;
-    }
-
-    board[availableSpots[i]] = '';
-    moves.push(move);
-  }
-
-  let bestMove;
-  if (player === 'O') {
-    let bestScore = -Infinity;
-    for (let i = 0; i < moves.length; i++) {
-      if (moves[i].score > bestScore) {
-        bestScore = moves[i].score;
-        bestMove = i;
+      let bestScore = Infinity;
+      for (let i = 0; i < moves.length; i++) {
+        if (moves[i].score < bestScore) {
+          bestScore = moves[i].score;
+          bestMove = i;
+        }
       }
     }
-  } else {
-    let bestScore = Infinity;
-    for (let i = 0; i < moves.length; i++) {
-      if (moves[i].score < bestScore) {
-        bestScore = moves[i].score;
-        bestMove = i;
+
+    return moves[bestMove];
+  }
+
+  // Check if a player has won
+  checkWinForPlayer(board, player) {
+    return this.winningCombinations.some(combination => {
+      return combination.every(index => board[index] === player);
+    });
+  }
+
+  // Check for a win
+  checkWin() {
+    return this.checkWinForPlayer(this.board, this.currentPlayer);
+  }
+
+  // Check for a draw
+  checkDraw() {
+    return this.board.every(cell => cell !== '');
+  }
+
+  // End the game
+  endGame(draw) {
+    this.gameActive = false;
+    if (draw) {
+      this.status.textContent = 'It\'s a draw!';
+    } else {
+      if (this.currentPlayer === 'X') {
+        this.playerScore++;
+        this.status.textContent = `${this.playerName} (X) wins!`;
+      } else {
+        this.aiScore++;
+        this.status.textContent = 'AI (O) wins!';
       }
+    }
+    this.updateHighScores();
+    this.updateScoreboard();
+    this.gameBoard.childNodes.forEach(cell => cell.removeEventListener('click', this.handleCellClick));
+  }
+
+  // Save player name
+  saveName() {
+    const name = this.playerNameInput.value.trim();
+    if (name) {
+      this.playerName = name;
+      this.playerNameDisplay.textContent = `${this.playerName}`;
+      localStorage.setItem('playerName', this.playerName);
+      this.status.textContent = `${this.playerName}'s turn (X) vs. AI (O)`;
+      this.playerNameInput.value = '';
+      this.updateScoreboard();
+    } else {
+      this.status.textContent = 'Please enter a valid name!';
     }
   }
 
-  return moves[bestMove];
-}
-
-function checkWinForPlayer(board, player) {
-  return winningCombinations.some(combination => {
-    return combination.every(index => board[index] === player);
-  });
-}
-
-function checkWin() {
-  return checkWinForPlayer(board, currentPlayer);
-}
-
-function checkDraw() {
-  return board.every(cell => cell !== '');
-}
-
-function endGame(draw) {
-  gameActive = false;
-  if (draw) {
-    status.textContent = 'Draw!';
-  } else {
-    status.textContent = `${currentPlayer === 'X' ? playerName : 'AI'} wins!`;
-    if (currentPlayer === 'X') playerScore++;
-    else aiScore++;
-    if (playerScore + aiScore > highScore) highScore = playerScore + aiScore;
+  // Update scoreboard display
+  updateScoreboard() {
+    this.playerNameDisplay.textContent = `${this.playerName}`;
+    this.playerScoreDisplay.textContent = this.playerScore;
+    this.aiScoreDisplay.textContent = this.aiScore;
   }
-  playerScoreDisplay.textContent = playerScore;
-  aiScoreDisplay.textContent = aiScore;
-  highScoreDisplay.textContent = highScore;
 
-  // Save scores to localStorage
-  localStorage.setItem('playerScore', playerScore);
-  localStorage.setItem('aiScore', aiScore);
-  localStorage.setItem('highScore', highScore);
+  // Update high scores
+  updateHighScores() {
+    // Add or update the player's score
+    const existingPlayerIndex = this.highScores.findIndex(player => player.name === this.playerName);
+    if (existingPlayerIndex !== -1) {
+      this.highScores[existingPlayerIndex].score = this.playerScore;
+    } else {
+      this.highScores.push({ name: this.playerName, score: this.playerScore });
+    }
 
-  gameBoard.childNodes.forEach(cell => cell.removeEventListener('click', handleCellClick));
+    // Sort high scores in descending order and take top 3
+    this.highScores.sort((a, b) => b.score - a.score);
+    this.highScores = this.highScores.slice(0, 3);
+
+    // Save to localStorage
+    localStorage.setItem('highScores', JSON.stringify(this.highScores));
+
+    // Update high scores display
+    this.highScoresList.innerHTML = '';
+    if (this.highScores.length === 0) {
+      const li = document.createElement('li');
+      li.textContent = 'No scores yet';
+      this.highScoresList.appendChild(li);
+    } else {
+      this.highScores.forEach(({ name, score }) => {
+        const li = document.createElement('li');
+        li.textContent = `${name}: ${score}`;
+        this.highScoresList.appendChild(li);
+      });
+    }
+  }
 }
 
-// Save player name and update display
-saveNameBtn.addEventListener('click', () => {
-  const name = playerNameInput.value.trim();
-  if (name) {
-    playerName = name;
-    playerNameDisplay.textContent = `${playerName}: `;
-    localStorage.setItem('playerName', playerName);
-    status.textContent = `${playerName}'s turn (X)`;
-    playerNameInput.value = ''; // Clear input
-  } else {
-    status.textContent = 'Please enter a valid name!';
-  }
-});
-
-startGameBtn.addEventListener('click', startGame);
-createBoard();
+// Initialize the game
+const game = new TicTacToe();

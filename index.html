@@ -1,168 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bigendra Shrestha's portfolio documenting my growth as a coder.">
   <title>Bigendra Shrestha's Learning Journey</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap">
 </head>
 <body>
-  <!-- Header -->
-  <header id="header">
+  <header id="header" role="banner">
     <div class="content">
       <h1>Bigendra Shrestha's Learning Journey</h1>
       <p>Documenting my growth as a coder through my internship, DataCamp courses, coding books, and real-life experiences.</p>
-       <div class="actions">
-          <a href="#explore" class="button"><i class="fas fa-compass"></i> Explore</a>
-       </div>
-      <div class="image phone">
-        <img src="images/myphoto.jpg" alt="Phone Mockup" />
-      </div>
+      <img src="images/myphoto.jpg" alt="Bigendra Shrestha's profile photo" class="profile-photo">
+      <nav class="actions">
+        <a href="#explore" class="button"><i class="fas fa-arrow-down"></i> Explore</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main -->
-  <div id="main">
-    <!-- Explore Section -->
-    <article id="explore" class="wrapper style2">
-      <div class="container">
-        <header>
+  <main role="main">
+    <section id="explore" class="wrapper explore-section">
+      <div class="inner">
+        <header class="major">
           <h2>Explore My Journey</h2>
         </header>
-        <div class="explore-section">
-          <div class="explore-grid">
-            <a href="posts/internship/internship.html" class="explore-item">
-              <div class="icon-circle">
-                <i class="fas fa-briefcase"></i>
-              </div>
-              <span class="explore-title">Internship</span>
-            </a>
-            <a href="posts\datacamp\datacamp.html" class="explore-item">
-              <div class="icon-circle">
-                <i class="fas fa-book"></i>
-              </div>
-              <span class="explore-title">DataCamp Courses</span>
-            </a>
-            <a href="posts\books\books.html" class="explore-item">
-              <div class="icon-circle">
-                <i class="fas fa-book-open"></i>
-              </div>
-              <span class="explore-title">Coding Books</span>
-            </a>
-            <a href="posts\experiences\experiences.html" class="explore-item">
-              <div class="icon-circle">
-                <i class="fas fa-globe"></i>
-              </div>
-              <span class="explore-title">Real-Life Experiences</span>
-            </a>
-            <a href="about.html" class="explore-item">
-              <div class="icon-circle">
-                <i class="fas fa-user"></i>
-              </div>
-              <span class="explore-title">About Me</span>
-            </a>
-          </div>
+        <div class="explore-grid">
+          <a href="#internship" class="explore-item">
+            <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
+            <span class="explore-title">Internship</span>
+          </a>
+          <a href="#datacamp" class="explore-item">
+            <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+            <span class="explore-title">DataCamp Courses</span>
+          </a>
+          <a href="#books" class="explore-item">
+            <div class="icon-circle"><i class="fas fa-book"></i></div>
+            <span class="explore-title">Coding Books</span>
+          </a>
+          <a href="#experiences" class="explore-item">
+            <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
+            <span class="explore-title">Real-Life Experiences</span>
+          </a>
+          <a href="#about" class="explore-item">
+            <div class="icon-circle"><i class="fas fa-user"></i></div>
+            <span class="explore-title">About Me</span>
+          </a>
         </div>
       </div>
-    </article>
+    </section>
 
-    <!-- Timeline Section -->
-    <article id="timeline" class="wrapper style3">
-      <div class="container">
-        <header>
+    <section id="timeline" class="wrapper style2">
+      <div class="inner">
+        <header class="major">
           <h2>My Learning Timeline</h2>
           <p>Key milestones in my coding journey.</p>
         </header>
         <div class="timeline">
-          <div class="event left">
+          <article class="event left">
             <div class="event-content">
               <h3>Started Nobel Internship</h3>
               <p>March 31, 2025 - Began my transformative journey with EduQuest training.</p>
             </div>
-          </div>
-          <div class="event right">
+          </article>
+          <article class="event right">
             <div class="event-content">
               <h3>Completed Web Design Class</h3>
               <p>April 15, 2025 - Facilitated with an amazing team.</p>
             </div>
-          </div>
-          <div class="event left">
+          </article>
+          <article class="event left">
             <div class="event-content">
               <h3>First DataCamp Course</h3>
               <p>May 2025 - Finished Python basics course.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
-    </article>
+    </section>
 
-    <!-- Updates Section -->
-    <article id="updates" class="wrapper style2">
-      <div class="container">
-        <header>
+    <section id="updates" class="wrapper">
+      <div class="inner">
+        <header class="major">
           <h2>Latest Updates</h2>
         </header>
-        <div class="row aln-center">
-          <div class="col-6">
-            <section class="feature">
+        <div class="features">
+          <article>
+            <header>
               <h3>First Month Learning Update</h3>
               <p>09:03 PM +0545, Tuesday, May 27, 2025 - My first month coding during my internship, DataCamp, and with Automate the Boring Stuff.</p>
-              <a href="#" class="button">Read More</a>
-            </section>
-          </div>
-          <div class="col-6">
-            <section class="feature">
+              <a href="#update1" class="button">Read More</a>
+            </header>
+          </article>
+          <article>
+            <header>
               <h3>Completed DataCamp Course</h3>
               <p>May 2025 - Finished my first DataCamp course on Python basics.</p>
-              <a href="#" class="button">Read More</a>
-            </section>
-          </div>
+              <a href="#update2" class="button">Read More</a>
+            </header>
+          </article>
         </div>
       </div>
-    </article>
+    </section>
 
-    <!-- Tic-Tac-Toe Section -->
-    <article id="tic-tac-toe" class="wrapper style4">
-      <div class="container">
-        <header>
-          <h2>Play Tic-Tac-Toe</h2>
-          <p>Test your skills with a classic game against an AI!</p>
+    <section id="tic-tac-toe" class="wrapper">
+      <div class="inner">
+        <header class="major">
+          <h2>Play Tic-Tac-Toe (Player vs. AI)</h2>
+          <p>Challenge the AI in a classic game!</p>
         </header>
         <div class="player-name-input">
-          <label for="playerName">Enter your name: </label>
-          <input type="text" id="playerName" placeholder="Your name" />
-          <button id="saveName" class="button">Save Name</button>
+          <label for="playerName">Enter your name:</label>
+          <input type="text" id="playerName" placeholder="Your name" aria-label="Player name input">
+          <button id="saveName">Save Name</button>
         </div>
         <div class="game-container">
-          <div class="game-board" id="gameBoard"></div>
+          <div id="gameBoard" class="game-board" role="grid" aria-label="Tic-Tac-Toe game board"></div>
           <div class="scoreboard">
             <h3>Scoreboard</h3>
             <ul>
-              <li id="playerNameDisplay">: <span id="playerScore">0</span></li>
+              <li><span id="playerNameDisplay">Player</span>: <span id="playerScore">0</span></li>
               <li>AI: <span id="aiScore">0</span></li>
-              <li class="high-score">High Score: <span id="highScore">0</span></li>
             </ul>
+            <h4>Top High Scores</h4>
+            <ol id="highScoresList">
+              <li>No scores yet</li>
+            </ol>
           </div>
         </div>
         <div class="game-controls">
           <button id="startGame" class="button">Start Game</button>
-          <div id="status" class="status">Enter your name to start</div>
+          <button id="resetGame" class="button">Reset Game</button>
+          <div id="status" class="status" role="status">Enter your name to start</div>
         </div>
       </div>
-    </article>
-  </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer id="footer">
-     <ul class="icons">
-         <li><a href="https://github.com/yourusername" class="fab fa-github"><span class="label">GitHub</span></a></li>
-         <li><a href="mailto:your.email@gmail.com" class="fas fa-envelope"><span class="label">Email</span></a></li>
-         <li><a href="https://www.linkedin.com/in/bigendrashrestha/" class="fab fa-linkedin"><span class="label">LinkedIn</span></a></li>
+  <footer id="footer" role="contentinfo">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="https://github.com/potat0ka" class="fab fa-github" aria-label="GitHub profile"></a></li>
+        <li><a href="mailto:bigendra.shrestha@example.com" class="fas fa-envelope" aria-label="Email contact"></a></li>
+        <li><a href="https://linkedin.com/in/bigendrashrestha" class="fab fa-linkedin" aria-label="LinkedIn profile"></a></li>
       </ul>
-    <div class="copyright">© Bigendra Shrestha. Design adapted from HTML5 UP.</div>
+      <div class="copyright">
+        © Bigendra Shrestha. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.
+      </div>
+    </div>
   </footer>
 
   <script src="assets/js/script.js"></script>
