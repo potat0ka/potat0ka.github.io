@@ -4,47 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bigendra Shrestha's portfolio documenting my growth as a coder.">
-  <title>Bigendra Shrestha's Learning Journey</title>
+  <title>Bigendra Shrestha's Portfolio</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 <body>
   <header id="header" role="banner">
     <div class="content">
-      <h1>Bigendra Shrestha's Learning Journey</h1>
-      <p>Documenting my growth as a coder through my internship, DataCamp courses, coding books, and real-life experiences.</p>
+      <h1>BIGENDRA SHRESTHA</h1>
+      <p style="text-align: center;">Documenting my growth as a coder through internships, courses, projects, and experiences.</p>
       <img src="images/myphoto.jpg" alt="Bigendra Shrestha's profile photo" class="profile-photo">
       <nav class="actions">
-        <a href="#explore" class="button"><i class="fas fa-arrow-down"></i> Explore</a>
+        <a href="#explore" class="button primary">Explore</a>
       </nav>
     </div>
   </header>
 
-  <main role="main">
-    <section id="explore" class="wrapper explore-section">
+  <main role="main" class="fade-in">
+    <section id="explore" class="wrapper">
       <div class="inner">
         <header class="major">
           <h2>Explore My Journey</h2>
         </header>
         <div class="explore-grid">
-          <a href="#internship" class="explore-item">
+          <a href="posts/internship/internship.html" class="explore-item">
             <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
             <span class="explore-title">Internship</span>
           </a>
-          <a href="#datacamp" class="explore-item">
+          <a href="posts/datacamp/datacamp.html" class="explore-item">
             <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
             <span class="explore-title">DataCamp Courses</span>
           </a>
-          <a href="#books" class="explore-item">
+          <a href="posts/books/books.html" class="explore-item">
             <div class="icon-circle"><i class="fas fa-book"></i></div>
             <span class="explore-title">Coding Books</span>
           </a>
-          <a href="#experiences" class="explore-item">
+          <a href="posts/experiences/experiences.html" class="explore-item">
             <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
             <span class="explore-title">Real-Life Experiences</span>
           </a>
-          <a href="#about" class="explore-item">
+          <a href="about.html" class="explore-item">
             <div class="icon-circle"><i class="fas fa-user"></i></div>
             <span class="explore-title">About Me</span>
           </a>
@@ -52,31 +52,35 @@
       </div>
     </section>
 
-    <section id="timeline" class="wrapper style2">
+    <section id="timeline" class="wrapper alt">
       <div class="inner">
         <header class="major">
           <h2>My Learning Timeline</h2>
           <p>Key milestones in my coding journey.</p>
         </header>
-        <div class="timeline">
+        <div class="timeline-container">
           <article class="event left">
             <div class="event-content">
               <h3>Started Nobel Internship</h3>
-              <p>March 31, 2025 - Began my transformative journey with EduQuest training.</p>
+              <span class="date">March 31, 2025</span>
+              <p>Began my journey with EduQuest, diving into web design and leadership training.</p>
             </div>
           </article>
           <article class="event right">
             <div class="event-content">
               <h3>Completed Web Design Class</h3>
-              <p>April 15, 2025 - Facilitated with an amazing team.</p>
+              <span class="date">April 15, 2025</span>
+              <p>Facilitated an Introduction to Web Design class with my team, enhancing my skills.</p>
             </div>
           </article>
           <article class="event left">
             <div class="event-content">
               <h3>First DataCamp Course</h3>
-              <p>May 2025 - Finished Python basics course.</p>
+              <span class="date">May 2025</span>
+              <p>Completed 'Introduction to Python' on DataCamp, mastering Python basics.</p>
             </div>
           </article>
+          <div class="clear"></div>
         </div>
       </div>
     </section>
@@ -87,19 +91,15 @@
           <h2>Latest Updates</h2>
         </header>
         <div class="features">
-          <article>
-            <header>
-              <h3>First Month Learning Update</h3>
-              <p>09:03 PM +0545, Tuesday, May 27, 2025 - My first month coding during my internship, DataCamp, and with Automate the Boring Stuff.</p>
-              <a href="#update1" class="button">Read More</a>
-            </header>
+          <article class="post-card">
+            <h3>First Month Learning Update</h3>
+            <p>09:03 PM +0545, Tuesday, May 27, 2025 - My first month coding during my internship and with Automate the Boring Stuff.</p>
+            <a href="#update1" class="button">Read More</a>
           </article>
-          <article>
-            <header>
-              <h3>Completed DataCamp Course</h3>
-              <p>May 2025 - Finished my first DataCamp course on Python basics.</p>
-              <a href="#update2" class="button">Read More</a>
-            </header>
+          <article class="post-card">
+            <h3>Completed DataCamp Course</h3>
+            <p>May 2025 - Finished my first DataCamp course on Python basics.</p>
+            <a href="#update2" class="button">Read More</a>
           </article>
         </div>
       </div>
@@ -109,12 +109,12 @@
       <div class="inner">
         <header class="major">
           <h2>Play Tic-Tac-Toe (Player vs. AI)</h2>
-          <p>Challenge the AI in a classic game!</p>
+          <p style="text-align: center;">Challenge the AI in a classic game!</p>
         </header>
         <div class="player-name-input">
-          <label for="playerName">Enter your name:</label>
+          <label for="playerName">Enter Your Name:</label>
           <input type="text" id="playerName" placeholder="Your name" aria-label="Player name input">
-          <button id="saveName">Save Name</button>
+          <button id="saveName" class="button">Save Name</button>
           <div id="nameError" class="error-message"></div>
         </div>
         <div class="game-container">
@@ -132,7 +132,7 @@
           </div>
         </div>
         <div class="game-controls">
-          <button id="startGame" class="button">Start Game</button>
+          <button id="startGame" class="button primary">Start Game</button>
           <button id="resetGame" class="button">Reset Game</button>
           <div id="status" class="status" role="status">Enter your name to start</div>
         </div>
@@ -148,7 +148,7 @@
         <li><a href="https://linkedin.com/in/bigendrashrestha" class="fab fa-linkedin" aria-label="LinkedIn profile"></a></li>
       </ul>
       <div class="copyright">
-        © Bigendra Shrestha. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.
+        © 2025 Bigendra Shrestha. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.
       </div>
     </div>
   </footer>
