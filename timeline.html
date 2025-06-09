@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Learning Timeline - Bigendra Shrestha's Learning Journey</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <style>
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #2c3e50;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+    .event {
+      padding: 10px 20px;
+      position: relative;
+      width: 45%;
+      margin-bottom: 20px;
+    }
+    .event.left { left: 0; }
+    .event.right { left: 55%; }
+    .event::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: #3498db;
+      border-radius: 50%;
+      top: 20px;
+      right: -8px;
+    }
+    .event.left::before { right: auto; left: -8px; }
+    .event-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    @media screen and (max-width: 736px) {
+      .timeline::before { left: 20px; }
+      .event { width: 100%; left: 0; padding-left: 40px; }
+      .event.right { left: 0; }
+      .event::before { left: 12px; right: auto; }
+    }
+  </style>
+</head>
+<body class="is-preload">
+  <header id="header">
+    <div class="content">
+      <h1><a href="index.html">Bigendra Shrestha's Learning Journey</a></h1>
+      <p>Learning Timeline</p>
+    </div>
+  </header>
+  <section id="one" class="wrapper">
+    <div class="inner alt">
+      <div class="timeline">
+        <div class="event left">
+          <div class="event-content">
+            <h3>March 2025</h3>
+            <p>Started internship: Learned Python scripting for data automation.</p>
+          </div>
+        </div>
+        <div class="event right">
+          <div class="event-content">
+            <h3>May 2025</h3>
+            <p>Completed DataCamp's "Introduction to Python" course.</p>
+          </div>
+        </div>
+        <div class="event left">
+          <div class="event-content">
+            <h3>May 2025</h3>
+            <p>Read <em>Automate the Boring Stuff with Python</em>: Mastered file handling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="footer">
+    <ul class="icons">
+      <li><a href="https://github.com/potat0ka" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+    </ul>
+    <p class="copyright">© 2025 Bigendra Shrestha. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+  </footer>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
