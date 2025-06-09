@@ -1,0 +1,78 @@
+<svg width="400" height="250" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="projectBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#projectBg)"/>
+  
+  <!-- Browser mockup -->
+  <g transform="translate(50, 30)">
+    <!-- Browser window -->
+    <rect width="300" height="190" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    
+    <!-- Browser header -->
+    <rect width="300" height="30" rx="8" fill="#f1f5f9"/>
+    <rect y="30" width="300" height="160" fill="url(#screenGradient)"/>
+    
+    <!-- Traffic lights -->
+    <circle cx="20" cy="15" r="4" fill="#ef4444"/>
+    <circle cx="35" cy="15" r="4" fill="#f59e0b"/>
+    <circle cx="50" cy="15" r="4" fill="#10b981"/>
+    
+    <!-- Address bar -->
+    <rect x="80" y="8" width="180" height="14" rx="7" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="85" y="18" font-family="monospace" font-size="8" fill="#64748b">https://project-demo.com</text>
+    
+    <!-- Code content -->
+    <g transform="translate(20, 50)">
+      <!-- HTML structure -->
+      <text x="0" y="15" font-family="monospace" font-size="10" fill="#3b82f6">&lt;div className="container"&gt;</text>
+      <text x="20" y="30" font-family="monospace" font-size="10" fill="#10b981">&lt;header&gt;</text>
+      <text x="40" y="45" font-family="monospace" font-size="10" fill="#f59e0b">&lt;h1&gt;Project Title&lt;/h1&gt;</text>
+      <text x="20" y="60" font-family="monospace" font-size="10" fill="#10b981">&lt;/header&gt;</text>
+      
+      <!-- Component structure -->
+      <text x="20" y="80" font-family="monospace" font-size="10" fill="#8b5cf6">&lt;main&gt;</text>
+      <text x="40" y="95" font-family="monospace" font-size="10" fill="#ef4444">&lt;Component /&gt;</text>
+      <text x="20" y="110" font-family="monospace" font-size="10" fill="#8b5cf6">&lt;/main&gt;</text>
+      
+      <text x="0" y="125" font-family="monospace" font-size="10" fill="#3b82f6">&lt;/div&gt;</text>
+      
+      <!-- Cursor blink -->
+      <rect x="90" y="118" width="1" height="12" fill="#ffffff">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <!-- Floating elements -->
+    <g opacity="0.3">
+      <rect x="250" y="50" width="30" height="20" rx="4" fill="#3b82f6"/>
+      <rect x="250" y="80" width="25" height="15" rx="3" fill="#10b981"/>
+      <rect x="250" y="105" width="35" height="18" rx="4" fill="#f59e0b"/>
+    </g>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="30" cy="30" r="8" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="370" cy="220" r="12" fill="#10b981" opacity="0.2"/>
+  <rect x="340" y="40" width="20" height="20" rx="4" fill="#f59e0b" opacity="0.2"/>
+  
+  <!-- Tech stack icons -->
+  <g transform="translate(320, 180)" opacity="0.4">
+    <circle cx="0" cy="0" r="15" fill="#61dafb"/>
+    <text x="-8" y="4" font-family="monospace" font-size="14" fill="#ffffff">R</text>
+  </g>
+  
+  <g transform="translate(350, 200)" opacity="0.4">
+    <rect x="-10" y="-10" width="20" height="20" rx="3" fill="#68d391"/>
+    <text x="-6" y="2" font-family="monospace" font-size="12" fill="#ffffff">JS</text>
+  </g>
+</svg>
